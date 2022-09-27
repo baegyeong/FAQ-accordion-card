@@ -11,8 +11,7 @@ const faqList = [
   },
   {
     title: "How do I reset my password?",
-    contents:
-      "Click “Forgot password” from the login page or “Change password” from your profile page. A reset link will be emailed to you.",
+    contents: `Click "Forgot password" from the login page or "Change password" from your profile page. A reset link will be emailed to you.`,
   },
   {
     title: "Can I cancel my subscription?",
@@ -27,7 +26,7 @@ const faqList = [
 ];
 const faqContainer = document.querySelector(".faq-container");
 
-faqList.forEach((faq) => {
+faqList.forEach((faq, index) => {
   const faqElement = document.createElement("div");
   const headerElement = document.createElement("div");
   const titleElement = document.createElement("span");
@@ -39,6 +38,7 @@ faqList.forEach((faq) => {
   titleElement.className = "title-element";
   arrowImg.className = "arrow-img";
   contentElement.className = "content-element";
+  contentElement.id = `content-${index}`;
 
   titleElement.innerText = faq.title;
   arrowImg.src = "./images/icon-arrow-down.svg";
@@ -49,10 +49,27 @@ faqList.forEach((faq) => {
     const headerDOM = e.target.parentNode;
     const contentDOM = headerDOM.nextSibling;
     const imgDOM = headerDOM.querySelector(".arrow-img");
+    const titleDOM = headerDOM.querySelector(".title-element");
+
     if (contentDOM.style.display == "none") {
+      // 나머지를 다 none으로 한다.
+      const contents = document.querySelectorAll(".content-element");
+      const imgs = document.querySelectorAll(".arrow-img");
+      const titles = document.querySelectorAll(".title-element");
+      for (const content of contents) {
+        content.style.display = "none";
+      }
+      for (const img of imgs) {
+        img.classList.remove("rotate");
+      }
+      for (const title of titles) {
+        title.style.fontWeight = "400";
+      }
+      titleDOM.style.fontWeight = "700";
       contentDOM.style.display = "block";
       imgDOM.classList.add("rotate");
     } else {
+      titleDOM.style.fontWeight = "400";
       contentDOM.style.display = "none";
       imgDOM.classList.remove("rotate");
     }
