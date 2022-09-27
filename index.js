@@ -34,9 +34,29 @@ faqList.forEach((faq) => {
   const arrowImg = document.createElement("img");
   const contentElement = document.createElement("div");
 
+  faqElement.className = "faq-element";
+  headerElement.className = "header-element";
+  titleElement.className = "title-element";
+  arrowImg.className = "arrow-img";
+  contentElement.className = "content-element";
+
   titleElement.innerText = faq.title;
   arrowImg.src = "./images/icon-arrow-down.svg";
   contentElement.innerText = faq.contents;
+
+  contentElement.style.display = "none";
+  headerElement.addEventListener("click", (e) => {
+    const headerDOM = e.target.parentNode;
+    const contentDOM = headerDOM.nextSibling;
+    const imgDOM = headerDOM.querySelector(".arrow-img");
+    if (contentDOM.style.display == "none") {
+      contentDOM.style.display = "block";
+      imgDOM.classList.add("rotate");
+    } else {
+      contentDOM.style.display = "none";
+      imgDOM.classList.remove("rotate");
+    }
+  });
 
   headerElement.appendChild(titleElement);
   headerElement.appendChild(arrowImg);
