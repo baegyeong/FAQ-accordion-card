@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans&family=Nanum+Gothic&display=swap");
+
+h1 {
+  margin: 0;
+  padding-bottom: 20px;
+}
+body {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Kumbh Sans", sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
+  background: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
+}
+
+.container {
+  background-color: white;
+  border-radius: 25px;
+  display: flex;
+}
+
+.faq-container {
+  padding: 65px 70px 65px 70px;
+}
+.illustration {
+  background: url("./images/bg-pattern-desktop.svg");
+  background-size: cover;
+  content: url("./images/illustration-woman-online-desktop.svg");
+  position: relative;
+  left: -68px;
+  height: 300px;
+  top: 18px;
+}
+
+.rotate {
+  transform: rotate(0.5turn);
+}
+
+.faq-element {
+  border-bottom: 1px solid hsl(240, 5%, 91%);
+  padding: 10px 0;
+  width: 270px;
+}
+
+.header-element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-element {
+  color: hsl(237, 12%, 33%);
+  font-weight: normal;
+}
+
+.content-element {
+  color: hsl(240, 6%, 50%);
+  padding: 20px 0;
+  line-height: 160%;
+}
+
+.arrow-img {
+  width: 10px;
+  height: 7px;
+}
