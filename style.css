@@ -44,24 +44,41 @@ body {
   width: 270px;
 }
 
-.header-element {
+.faq-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.title-element {
+.faq-title {
   color: hsl(237, 12%, 33%);
   font-weight: normal;
 }
 
-.content-element {
+.faq-content {
   color: hsl(240, 6%, 50%);
   padding: 20px 0;
   line-height: 160%;
 }
 
-.arrow-img {
+.accordion-btn-img {
   width: 10px;
   height: 7px;
+}
+
+@media only screen and (max-width: 375px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .illustration {
+    position: static;
+    width: 275px;
+    height: 190px;
+  }
+
+  .faq-container {
+    padding: 45px 20px;
+  }
 }
