@@ -25,34 +25,49 @@ const faqList = [
   },
 ];
 
+const isNotSelect = (faqContent) => {
+  return faqContent.style.display === "none";
+};
+
+const initFaqStatus = () => {
+  const contents = document.querySelectorAll(".faq-content");
+  const imgs = document.querySelectorAll(".accordion-btn-img");
+  const titles = document.querySelectorAll(".faq-title");
+
+  for (const content of contents) {
+    content.style.display = "none";
+  }
+  for (const img of imgs) {
+    img.classList.remove("rotate");
+  }
+  for (const title of titles) {
+    title.style.fontWeight = "400";
+  }
+};
+
+const displayFaqContent = (title, content, img) => {
+  title.style.fontWeight = "700";
+  content.style.display = "block";
+  img.classList.add("rotate");
+};
+
+const hideFaqContent = (title, content, img) => {
+  title.style.fontWeight = "400";
+  content.style.display = "none";
+  img.classList.remove("rotate");
+};
+
 const clickEventHandler = (e) => {
-  const headerDOM = e.target.parentNode;
-  const contentDOM = headerDOM.nextSibling;
-  const imgDOM = headerDOM.querySelector(".accordion-btn-img");
-  const titleDOM = headerDOM.querySelector(".faq-title");
+  const faqHeader = e.target.parentNode;
+  const faqContent = faqHeader.nextSibling;
+  const accordionBtnImg = faqHeader.querySelector(".accordion-btn-img");
+  const faqTitle = faqHeader.querySelector(".faq-title");
 
-  if (contentDOM.style.display === "none") {
-    // 나머지를 다 none으로 한다.
-    const contents = document.querySelectorAll(".faq-content");
-    const imgs = document.querySelectorAll(".accordion-btn-img");
-    const titles = document.querySelectorAll(".faq-title");
-
-    for (const content of contents) {
-      content.style.display = "none";
-    }
-    for (const img of imgs) {
-      img.classList.remove("rotate");
-    }
-    for (const title of titles) {
-      title.style.fontWeight = "400";
-    }
-    titleDOM.style.fontWeight = "700";
-    contentDOM.style.display = "block";
-    imgDOM.classList.add("rotate");
+  if (isNotSelect(faqContent)) {
+    initFaqStatus();
+    displayFaqContent(faqTitle, faqContent, accordionBtnImg);
   } else {
-    titleDOM.style.fontWeight = "400";
-    contentDOM.style.display = "none";
-    imgDOM.classList.remove("rotate");
+    hideFaqContent(faqTitle, faqContent, accordionBtnImg);
   }
 };
 
@@ -73,7 +88,7 @@ faqList.forEach((faq, index) => {
 
   faqTitle.innerText = faq.title;
   accordionBtnImg.src = "./images/icon-arrow-down.svg";
-  faqContent.innerText = faq.contents;
+  faqContent.innerText = faq.content;
 
   faqContent.style.display = "none";
   faqHeader.addEventListener("click", clickEventHandler);
